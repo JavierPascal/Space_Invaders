@@ -53,7 +53,8 @@ class menuScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y){
                 super.clicked(event,x,y);
-                coreGame.setScreen(new spaceinvadersScreen(coreGame));
+                //coreGame.setScreen(new spaceinvadersScreen(coreGame));
+                coreGame.setScreen(new MarioScreen(coreGame));
             }
         });
 

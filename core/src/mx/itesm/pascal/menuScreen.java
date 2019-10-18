@@ -44,12 +44,17 @@ class menuScreen implements Screen {
 
     private void createMenu() {
         menuStage = new Stage(view);
-        TextureRegionDrawable trdSpaceInvaders = new TextureRegionDrawable(new TextureRegion(new Texture("btnSpaceInvaders.png")));
-        TextureRegionDrawable trdSpaceInvadersPressed = new TextureRegionDrawable(new TextureRegion(new Texture("btnSpaceInvadersPressed.png")));
+        TextureRegionDrawable trdSpaceInvaders = new TextureRegionDrawable(new TextureRegion(new Texture("Buttons/btnSpaceInvaders.png")));
+        TextureRegionDrawable trdSpaceInvadersPressed = new TextureRegionDrawable(new TextureRegion(new Texture("Buttons/btnSpaceInvadersPressed.png")));
         ImageButton btnSpaceInvaders = new ImageButton(trdSpaceInvaders,trdSpaceInvadersPressed);
         btnSpaceInvaders.setPosition(coreGame.Widht/2-btnSpaceInvaders.getWidth()/2,2*coreGame.Height/3);
 
-        btnSpaceInvaders.addListener(new ClickListener(){
+        TextureRegionDrawable trdMario = new TextureRegionDrawable(new TextureRegion(new Texture("Buttons/button_mario.png")));
+        TextureRegionDrawable trdMarioPressed = new TextureRegionDrawable(new TextureRegion(new Texture("Buttons/button_mario_pressed.png")));
+        ImageButton btnMario = new ImageButton(trdMario,trdMarioPressed);
+        btnMario.setPosition(coreGame.Widht/2-btnSpaceInvaders.getWidth()/2,2*coreGame.Height/3-2*btnMario.getHeight());
+
+        btnMario.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y){
                 super.clicked(event,x,y);
@@ -57,8 +62,17 @@ class menuScreen implements Screen {
                 coreGame.setScreen(new MarioScreen(coreGame));
             }
         });
+        btnSpaceInvaders.addListener(new ClickListener(){
+            @Override
+            public void clicked(InputEvent event, float x, float y){
+                super.clicked(event,x,y);
+                //coreGame.setScreen(new spaceinvadersScreen(coreGame));
+                coreGame.setScreen(new spaceinvadersScreen(coreGame));
+            }
+        });
 
         menuStage.addActor(btnSpaceInvaders);
+        menuStage.addActor(btnMario);
         Gdx.input.setInputProcessor(menuStage);
 
 
